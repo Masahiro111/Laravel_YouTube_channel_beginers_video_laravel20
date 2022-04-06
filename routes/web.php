@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +30,15 @@ Route::get('/about-dl', function () {
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/migration', function () {
+    $user = User::query()
+        ->create([
+            'name' => 'Taro',
+            'email' => 'taro@example.com',
+            'password' => Hash::make('password'),
+        ]);
+
+    return $user;
 });
