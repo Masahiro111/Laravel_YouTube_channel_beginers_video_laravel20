@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/about', function () {
+    // return view('about');
+    return redirect('about-laravel');
+});
+
+Route::get('/about-laravel', function () {
+    return view('about');
+});
+
+Route::get('/about-dl', function () {
+    return response()->download(public_path('about.txt'));
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
