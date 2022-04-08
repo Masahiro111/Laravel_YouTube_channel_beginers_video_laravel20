@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
@@ -42,3 +43,6 @@ Route::get('/migration', function () {
 
     return $user;
 });
+
+
+Route::resource('/products', ProductController::class);
