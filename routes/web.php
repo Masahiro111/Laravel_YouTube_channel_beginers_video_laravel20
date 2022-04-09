@@ -33,7 +33,7 @@ Route::middleware(['auth'])
             ->prefix('admin')
             ->group(function () {
                 Route::get('/', [AdminController::class, 'index']);
-                Route::resource('/project',);
+                Route::resource('/project', ProjectController::class);
             });
     });
 

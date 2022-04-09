@@ -12,12 +12,19 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     // $projects = Project::all();
+    //     $projects = auth()->user()->products;
+
+    //     return view('projects.index', compact('projects'));
+    // }
+
     public function index()
     {
-        // $projects = Project::all();
-        $projects = auth()->user()->products;
+        $projects = Project::all();
 
-        return view('projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects'));
     }
 
     /**
