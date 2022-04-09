@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProjectController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,14 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth'])
     ->group(function () {
         Route::resource('/project', ProjectController::class);
+
+        Route::middleware(['is_admin'])
+            ->name('admin.')
+            ->prefix('admin')
+            ->group(function () {
+                Route::get('/', [AdminController::class, 'index']);
+                Route::resource('/project',);
+            });
     });
 
 require __DIR__ . '/auth.php';
